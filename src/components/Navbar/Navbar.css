@@ -1,0 +1,64 @@
+nav{
+    margin: 0;
+    padding: 0vw 3vw;
+    display: flex;
+    justify-content: space-between;
+    background-color: #331D2C;
+}
+
+nav a{
+    text-decoration: none;
+    text-align: center;
+    color: #fff;
+    padding: 1vw 1vw;
+    margin: 0 1vw;
+}
+
+.logo > a{
+    display: flex;
+    align-items: center;
+    gap: 1vw;
+}
+nav > div{
+    display: flex;
+    align-items: center;
+}
+
+nav p{
+    font-size: 0.9vw;
+    margin: 0.3vw;
+}
+
+.phone__menu{
+    display: none;
+    z-index: 2;
+}
+.phone__menu span{
+    color: #fff;
+}
+.menu{
+    position: absolute;
+    left: 0;
+    top: 10;
+    width: 100%;
+    color: #fff;
+    background-color: #331D2C;
+
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 3vw;
+    padding: 3vw 3vw;
+}
+@media screen and (max-width: 768px) {
+    nav{
+        padding: 3vw 5vw;
+        align-items: center;
+    }
+    .desktop__menu{
+        display: none;
+    }
+    .phone__menu{
+        display: block;
+    }
+}
