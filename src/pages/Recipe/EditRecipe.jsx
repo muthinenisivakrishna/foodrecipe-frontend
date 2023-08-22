@@ -10,7 +10,8 @@ import recipeImg from "../../assets/recipe.png";
 
 const EditRecipe = () => {
   
- 
+  const url = "https://food-recipe-backend.vercel.app"
+
   const userID = useGetUserID();
   const { recipeId } = useParams();
   const [recipe, setRecipe] = useState({
@@ -26,7 +27,7 @@ const EditRecipe = () => {
   
   useEffect(() => {
     const fetchRecipe = async () => {
-      const res = await axios.get(`http://localhost:3001/recipes/${recipeId}`);
+      const res = await axios.get(`${url}/recipes/${recipeId}`);
       setRecipe({
         title: res.data.title,
         description: res.data.description,
@@ -53,7 +54,7 @@ const EditRecipe = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      axios.put(`http://localhost:3001/recipes/edit/${recipeId}`, recipe, {
+      axios.put(`${url}/recipes/edit/${recipeId}`, recipe, {
         headers: { authorization: cookies.access_token },
       });
       alert("Recipe updated");

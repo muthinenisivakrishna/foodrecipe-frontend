@@ -8,6 +8,7 @@ import recipeImg from "../../assets/recipe.png";
 
 const CreateRecipe = () => {
   const userID = useGetUserID();
+  const url = "https://food-recipe-backend.vercel.app"
 
   const [recipe, setRecipe] = useState({
     title: "",
@@ -30,7 +31,7 @@ const CreateRecipe = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = axios.post("http://localhost:3001/recipes", recipe, {
+      const response = axios.post(`${url}/recipes`, recipe, {
         headers: { authorization: cookies.access_token },
       });
       alert("Recipe created");

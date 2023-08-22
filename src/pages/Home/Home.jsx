@@ -11,10 +11,13 @@ const Home = () => {
   const [searchRecipe, setSearchRecipe] = useState("");
   const userId = useGetUserID();
 
+
+  const url = "https://food-recipe-backend.vercel.app"
+
   useEffect(() => {
     const fetchRecipes = async () => {
       try {
-        const response = await axios.get("http://localhost:3001/recipes");
+        const response = await axios.get(`${url}/recipes`);
         setRecipes(response.data);
       } catch (error) {
         console.log(error);
@@ -24,11 +27,11 @@ const Home = () => {
     const fetchSavedRecipes = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3001/recipes/savedRecipes/ids/${userId}`
+          `${url}/recipes/savedRecipes/ids/${userId}`
         );
         setSavedRecipes(response.data.savedRecipes);
       } catch (error) {
-        console.log(error);
+        console.log(error.response.data);
       }
     };
 
@@ -40,7 +43,7 @@ const Home = () => {
   const saveRecipe = async (recipeId) => {
     try {
       const response = await axios.put(
-        "http://localhost:3001/recipes",
+        `${url}/recipes`,
         {
           recipeId,
           userId,
@@ -56,13 +59,13 @@ const Home = () => {
   const findRecipe = async () => {
     try {
       if (searchRecipe === "") {
-        const response = await axios.get("http://localhost:3001/recipes");
+        const response = await axios.get(`${url}/recipes`);
         setRecipes(response.data);
         return;
       }
 
       const response = await axios.get(
-        `http://localhost:3001/recipes/search/${searchRecipe}`
+        `${url}/recipes/search/${searchRecipe}`
       );
       setRecipes(response.data);
     } catch (error) {

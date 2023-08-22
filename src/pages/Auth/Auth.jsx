@@ -8,6 +8,8 @@ import welcome from "../../assets/welcome.png";
 const Auth = () => {
   const [isLogin, setIsLogin] = useState(true);
 
+ 
+
   const handleFormChange = (form) => {
     if(form == "register"){
       setIsLogin(false);
@@ -33,6 +35,7 @@ const Auth = () => {
 };
 
 const Login = () => {
+  const url = "https://food-recipe-backend.vercel.app"
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
  const [showInfo, setShowInfo] = useState(false);
@@ -42,7 +45,7 @@ const Login = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:3001/auth/login", {
+      const response = await axios.post(`${url}/auth/login`, {
         username,
         password,
       });
@@ -71,6 +74,7 @@ const Login = () => {
 };
 
 const Register = () => {
+  const url = "https://food-recipe-backend.vercel.app"
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showInfo, setShowInfo] = useState(false);
@@ -81,11 +85,11 @@ const Register = () => {
     e.preventDefault();
 
     try {
-      axios.post("http://localhost:3001/auth/register", {
+      axios.post(`${url}/auth/register`, {
         username,
         password,
       }).then(async() => {
-        const response = await axios.post("http://localhost:3001/auth/login", {
+        const response = await axios.post(`${url}/auth/login`, {
           username,
           password,
         });

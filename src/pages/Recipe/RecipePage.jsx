@@ -5,11 +5,12 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 const RecipePage = () => {
+  const url = "https://food-recipe-backend.vercel.app"
   const { recipeId } = useParams();
   const [recipe, setRecipe] = useState({});
   useEffect(() => {
     const fetchRecipe = async () => {
-      const res = await axios.get(`http://localhost:3001/recipes/${recipeId}`);
+      const res = await axios.get(`${url}/recipes/${recipeId}`);
       setRecipe(res.data);
     };
     fetchRecipe();

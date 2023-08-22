@@ -9,12 +9,13 @@ const Profile = () => {
   const [createdRecipes, setCreatedRecipes] = useState([]);
   const [cookies, _] = useCookies(["access_token"]);
   const userId = useGetUserID();
+  const url = "https://food-recipe-backend.vercel.app"
 
   useEffect(() => {
     const fetchCreatedRecipes = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3001/recipes/creator/${userId}`
+          `${url}/recipes/creator/${userId}`
         );
         setCreatedRecipes(response.data);
       } catch (error) {
@@ -24,7 +25,7 @@ const Profile = () => {
     const fetchSavedRecipes = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3001/recipes/savedRecipes/${userId}`
+          `${url}/recipes/savedRecipes/${userId}`
         );
         setSavedRecipes(response.data.savedRecipes);
       } catch (error) {
@@ -38,7 +39,7 @@ const Profile = () => {
 
   const removeRecipe = async (recipeId) => {
     try {
-      await axios.delete("http://localhost:3001/recipes", {
+      await axios.delete(`${url}/recipes`, {
         data: { recipeId, userId, created: false },
       });
       setSavedRecipes((prevSavedRecipes) =>
@@ -51,7 +52,7 @@ const Profile = () => {
 
   const removeCreatedRecipe = async (recipeId) => {
     try {
-      await axios.delete("http://localhost:3001/recipes", {
+      await axios.delete(`${url}/recipes`, {
         data: { recipeId, userId, created: true },
       });
       setCreatedRecipes((prevCreatedRecipes) =>
@@ -70,6 +71,7 @@ const Profile = () => {
   const username = window.localStorage.getItem("username");
   return (
     <div>
+      <h2 className="welcome">Welcome {username} 👋</h2>
       <h2>Created Recipes</h2>
         {createdRecipes.length === 0 && <p className="status">You haven't created any recipes </p>}
       <div className="recipes-container">
