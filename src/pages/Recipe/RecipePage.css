@@ -41,7 +41,12 @@
   .recipe-container {
     grid-template-columns: repeat(1, 1fr);
   }
+  .recipe-img div {
+    flex-direction: column;
+    align-items: start;
+  }
   .recipe-img img {
+    width: 80vw;
     height: 50vw;
   }
   .recipe-img div {
@@ -49,6 +54,7 @@
   }
   .recipe-details {
     justify-self: center;
+    padding: 0 10vw 0 10vw;
         
   }
   
