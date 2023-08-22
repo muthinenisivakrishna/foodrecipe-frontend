@@ -5,8 +5,11 @@
   align-items: center;
   margin: 7vw 0;
 }
+.recipe-img {
+  padding: 0 5vw 0 10vw;
+}
 .recipe-img img {
-  width: 100%;
+  width: 25vw;
   height: 15vw;
   object-fit: cover;
   border-radius: 10px;
@@ -20,8 +23,11 @@
 .recipe-img div {
   display: flex;
   align-items: center;
-  gap: 0.5vw;
+  gap: .5vw;
   padding-left: 0.5vw;
+}
+.recipe-details{
+  padding: 0 15vw 0 0vw;
 }
 .recipe-details > h4 {
   font-weight: 500;
